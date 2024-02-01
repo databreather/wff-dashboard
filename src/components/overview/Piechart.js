@@ -3,18 +3,13 @@ import {PieChart} from '@mui/x-charts/PieChart'
 
 
 const Piechart = ({title, sx, data, pallete, value, label}) => {
-    // const transformedData = data.map((item, index) => ({
-    //   id: ,
-    //   value: item[value],
-    //   label: item[label],
-    // }));
     
     return (
 
       <Card sx={sx}>
         <CardContent>
           <Stack spacing={2} divider={<Divider/>}>
-            <Typography variant='h6' component='div' style={{fontSize: '15px'}}>
+            <Typography variant='h6' fontSize= '15px'>
               {title}
             </Typography>
         <Stack direction='row' justifyContent='center'>
@@ -26,7 +21,14 @@ const Piechart = ({title, sx, data, pallete, value, label}) => {
     },
   ]}
   width={320}
-  height={300}
+  height={250}
+  slotProps={{
+    legend: {
+      labelStyle: {
+        fontSize: '12px'
+      }
+    }
+  }}
 />
         </Stack>
 

@@ -6,6 +6,7 @@ import Overview  from "@/sections/overview";
 import Farmers from '@/sections/farmers';
 import Production from '@/sections/production';
 import SalesAndDistribution from '@/sections/salesAndDistribution';
+import SummaryReport from '@/sections/summaryReport';
 
 
 const Dashboard = () => {
@@ -50,7 +51,7 @@ const Dashboard = () => {
             {value === 'production' && <Production/>}
             {value === 'salesAndDistribution' && <SalesAndDistribution/>}
             {value === 'summaryReport' && (
-              <div>Downloadable consolidated information about farmers, crop production, sales and distribution</div>
+              <SummaryReport/>
             )}
         </Container>
       </Box>

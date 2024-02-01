@@ -8,21 +8,23 @@ const DashboardTabs = (props) => {
     const {value, onTabChange} = props
     return (
         <Grid container spacing={2}>
-            <Box sx={{ borderBottom: 1, borderColor: 'divider', marginBottom: 2 }}>
+            <Grid lg={12}>
+            <Box sx={{ borderBottom: 1, borderColor: 'divider', marginBottom: 2, width: '100%' }}>
             <Tabs
             value={value}
             onChange={onTabChange}
-            textColor='secondary'
-            indicatorColor='secondary'
+            textColor='primary'
+            indicatorColor='primary'
 
             >
-                <Tab value='overview' label='Overview'/>
-                <Tab value='farmers' label='Farmers'/>
-                <Tab value='production' label='Production'/>
-                {/* <Tab value='salesAndDistribution' label='Sales and Distribution'/>
-                <Tab value='summaryReport' label='Summary Report'/> */}
+                <Tab value='overview' label='Overview' wrapped/>
+                <Tab value='farmers' label='Farmers' wrapped/>
+                <Tab value='production' label='Production' wrapped/>
+                <Tab value='salesAndDistribution' label='Sales and Distribution' wrapped/>
+                <Tab value='summaryReport' label='Summary Report' wrapped/>
             </Tabs>
         </Box>
+            </Grid>
         </Grid>
     )
 }
