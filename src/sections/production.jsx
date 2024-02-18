@@ -3,17 +3,29 @@ import { Unstable_Grid2 as Grid } from "@mui/material";
 import Linechart from "@/components/overview/Linechart";
 import Barchart from "@/components/overview/Barchart";
 import Datatable from "@/components/overview/Datatable";
-import { monthlyCropProductionTrend, aggregationSystemComparison, topCropsByYield, cropsAndFarmersData, cropsData, avgYield } from "../../public/dataset/demoData";
 import { CHART_PALLETE } from "@/utils/chartPallete";
+import { Loader } from "@/pages/dashboard/loader";
 
-const Production = () => {
+const Production = ({data}) => {
 
+    if(!data){
+
+        return <Loader/>
+    }
+    const {
+        cropsData, 
+        avgYield, 
+        monthlyCropProductionTrend, 
+        aggregationSystemComparison, 
+        cropsAndFarmersData, 
+        topCropsByYield
+    } = data
     const columns = [
         {field: 'id', headerName: 'ID', type: 'number'},
         {field: 'crop', headerName: 'Crop Name'},
         {field: 'farmers', headerName: '# of Farmers'},
         {field: 'participation', headerName: '% of Farmers', type: 'number'},
-        {field: 'producedQty', headerName: 'Producted Qty'},
+        {field: 'producedQty', headerName: 'Produced Qty'},
         {field: 'unit', headerName: 'Unit', type: 'number'},
         //{field: 'productionValue', headerName: ''},
         // {field: 'aggregationSystem', headerName: 'Aggregation System', flex: 0.5},

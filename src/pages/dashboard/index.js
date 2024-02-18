@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect} from 'react';
 import {styled} from '@mui/material/styles'
 import {Box, Container} from '@mui/material'
 import DashboardTabs from '@/sections/dashboardTabs';
@@ -12,10 +12,35 @@ import SummaryReport from '@/sections/summaryReport';
 const Dashboard = () => {
 
     const [value, setValue] = useState('overview')
+    const [data, setData] = useState(null)
 
     const handleTabChange = (event, tab) => {
         setValue(tab)
     }
+
+    useEffect(() => {
+
+      const fetchData = async () => {
+        try{
+          const res  = await fetch('/api/getWFPData', {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            }
+          })
+          const data = await res.json()
+          console.log(data)
+          setData(data)
+        }catch(err){
+          console.error("Error: ", err)
+          //setData(err.data)
+        }
+      }
+
+      fetchData()
+
+    }, [])
 
   const SIDE_NAV_WIDTH = 280
   const LayoutRoot = styled('div')(({theme}) => ({
@@ -39,20 +64,21 @@ const Dashboard = () => {
       <Box
         component='main'
         sx={{
+          display: 'flex',
           flexGrow: 1,
           py: 8
         }}
-      >
-        
+      > 
         <Container maxWidth='xl'>
             <DashboardTabs value={value} onTabChange={handleTabChange}/>
-            {value === 'overview' && <Overview/>}
-            {value === 'farmers' && <Farmers/>}
-            {value === 'production' && <Production/>}
-            {value === 'salesAndDistribution' && <SalesAndDistribution/>}
+            {value === 'overview' && <Overview data={data}/>}
+            {value === 'farmers' && <Farmers data={data}/>}
+            {value === 'production' && <Production data={data}/>}
+            {value === 'salesAndDistribution' && <SalesAndDistribution data={data}/>}
             {value === 'summaryReport' && (
-              <SummaryReport/>
+              <SummaryReport data={data}/>
             )}
+        
         </Container>
       </Box>
     </LayoutContainer>

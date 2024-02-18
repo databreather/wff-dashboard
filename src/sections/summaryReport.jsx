@@ -1,10 +1,15 @@
 import * as React from "react";
 import { Unstable_Grid2 as Grid, Card, CardContent, Stack, Typography, Divider } from "@mui/material";
 import CustomToolbar from "@/components/overview/CustomToolBar";
-import { summaryReport } from "../../public/dataset/demoData";
 import Datatable from "@/components/overview/Datatable";
+import { Loader } from "@/pages/dashboard/loader";
 
-const SummaryReport = () => {
+const SummaryReport = ({data}) => {
+
+    if(!data){
+        return <Loader/>
+    }
+    const {summaryReport} = data
     const columns = [
         {field: 'id', headerName: 'ID', type: 'number', width: 80},
         {field: 'farmerName', headerName: 'Farmer Name', width: 150},

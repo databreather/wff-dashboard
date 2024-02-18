@@ -1,14 +1,19 @@
 import {Unstable_Grid2 as Grid} from '@mui/material'
-import {top5ChallengesByFarmers,farmersAggregationData, farmersNABData, farmers} from '../../public/dataset/demoData'
 import {CHART_PALLETE} from '@/utils/chartPallete'
-import { currencyFormatter, numberFormatter } from '@/utils/formatter'
+import { numberFormatter } from '@/utils/formatter'
 import KpiCard from '../components/overview/KpiCard'
 import Barchart from '../components/overview/Barchart'
 import Piechart from '../components/overview/Piechart'
 import DataTable from '@/components/overview/Datatable'
+import { Loader } from '@/pages/dashboard/loader'
 
-const Farmers = () => {
+const Farmers = ({data}) => {
 
+    if (!data){
+
+        return <Loader/>
+    }
+    const {farmers, farmersNABData, farmersAggregationData, top5ChallengesByFarmers} = data
     const columns = [
         {field: 'id', headerName: 'ID', type: 'number', width: 100},
         {field: 'fullName', headerName: 'Full Name', flex: 0.5},
@@ -20,6 +25,7 @@ const Farmers = () => {
         {field: 'aggregationSystem', headerName: 'Aggregation System', flex: 0.5},
         {field: 'nabCertificate', headerName: 'NAb Certificate', flex: 0.5}
     ]
+
     return <Grid container spacing={2}>
         <Grid xs={12} sm={6} md={4} lg={2}>
             <KpiCard title='Total Farmers' value={numberFormatter(2000)}/>

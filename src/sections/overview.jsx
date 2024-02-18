@@ -1,11 +1,17 @@
 import {Unstable_Grid2 as Grid} from '@mui/material'
-import {farmersByRegion, top5ChallengesByFarmers, top5SalesByFarmers, nodes} from '../../public/dataset/demoData'
 import { currencyFormatter, numberFormatter } from '@/utils/formatter'
 import KpiCard from '../components/overview/KpiCard'
 import Barchart from '../components/overview/Barchart'
 import Tree from '../components/overview/Tree'
+import { Loader } from '@/pages/dashboard/loader'
 
-const Overview = () => {
+const Overview = ({data}) => {
+    
+    if(!data){
+        return <Loader/>
+    }
+
+    const {farmersByRegion, top5ChallengesByFarmers, top5SalesByFarmers, nodes} = data
     return <Grid container spacing={2}>
         <Grid xs={12} sm={6} md={4} lg={2}>
             <KpiCard title='Total Value' value={currencyFormatter(2000)}/>

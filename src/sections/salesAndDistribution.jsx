@@ -4,13 +4,23 @@ import KpiCard from "@/components/overview/KpiCard";
 import { LineChart} from "@mui/x-charts";
 import Barchart from "@/components/overview/Barchart";
 import Datatable from "@/components/overview/Datatable";
-import Scatterchart from "@/components/overview/Scatterchart";
-import {cropSalesAndDistData, salesAndDistribution, salesVsDist, scatterData, top10FarmersByDistribution, top10FarmersBySales, top10CropsBySalesAndDistribution } from "../../public/dataset/demoData";
 import { currencyFormatter, numberFormatter } from '@/utils/formatter'
 import { CHART_PALLETE } from "@/utils/chartPallete";
+import { Loader } from "@/pages/dashboard/loader";
 
-const SalesAndDistribution = () => {
+const SalesAndDistribution = ({data}) => {
 
+    if(!data){
+        return <Loader/>
+    }
+    const {
+            cropSalesAndDistData, 
+            salesAndDistribution, 
+            salesVsDist, 
+            top10FarmersByDistribution, 
+            top10FarmersBySales, 
+            top10CropsBySalesAndDistribution
+        } = data
     const columns = [
         {field: 'id', headerName: 'ID', type: 'number', width: 50},
         {field: 'crop', headerName: 'Crop Name', type: 'string', width: 150},
