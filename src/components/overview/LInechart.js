@@ -15,8 +15,8 @@ const Linechart = ({title, sx, data, seriesDataKey, axisDataKey, width, height, 
             <LineChart
                 colors={colors}
                 dataset={data}
-                xAxis={[{scaleType: 'point', dataKey: axisDataKey, label: 'month'}]}
-                series={[{dataKey: seriesDataKey, area: false, label: 'Total Crops'}]}
+                xAxis={[{scaleType: 'point', dataKey: axisDataKey, label: axisDataKey}]}
+                series={[{dataKey: seriesDataKey, area: false, label: seriesDataKey}]}
                 slotProps={{
                   legend:{
                     labelStyle:{

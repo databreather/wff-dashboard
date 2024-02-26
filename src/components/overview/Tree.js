@@ -8,7 +8,7 @@ import { ChevronRightIcon, ChevronDownIcon } from '@heroicons/react/24/solid';
 import {usePagination} from '@table-library/react-table-library/pagination'
 
 const Tree = (props) => {
-  const {nodes} = props
+  const {nodes, columns} = props
 
   const theme = useTheme(getTheme(DEFAULT_OPTIONS));
 
@@ -43,49 +43,11 @@ const Tree = (props) => {
 
   function onPaginationChange(action, state) {
     console.log(action, state);
-  }
-
-  const COLUMNS = [
-    { label: 'Farmer', 
-      renderCell: (item) => item.name, tree: true
-    },
-    {
-      label: 'Production Qty',
-      renderCell: (item) => item.productionQty,
-    },
-    { label: 'Production Value', 
-      renderCell: (item) => item.productionValue 
-    },
-    {
-      label: 'Distributed Qty',
-      renderCell: (item) => item.distributedQty,
-    },
-    { 
-      label: 'Distributed Value', 
-      renderCell: (item) => item.distributedValue
-    },
-    { 
-      label: 'Sales Qty', 
-      renderCell: (item) => item.salesQty
-    },
-    { 
-      label: 'Sales Value', 
-      renderCell: (item) => item.salesValue
-    },
-    { 
-      label: 'Losses Qty', 
-      renderCell: (item) => item.lossesQty
-    },
-    { 
-      label: 'Losses Value', 
-      renderCell: (item) => item.lossesValue
-    }
-  ];
-  
+  }  
   return (
     <Card>
       <CardContent>
-        <CompactTable columns={COLUMNS} data={{nodes}} theme={theme} tree={tree} pagination={pagination}/>
+        <CompactTable columns={columns} data={{nodes}} theme={theme} tree={tree} pagination={pagination}/>
         <Stack>
             <TablePagination
               count={nodes.length}

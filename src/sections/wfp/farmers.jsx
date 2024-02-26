@@ -1,9 +1,9 @@
 import {Unstable_Grid2 as Grid} from '@mui/material'
 import {CHART_PALLETE} from '@/utils/chartPallete'
 import { numberFormatter } from '@/utils/formatter'
-import KpiCard from '../components/overview/KpiCard'
-import Barchart from '../components/overview/Barchart'
-import Piechart from '../components/overview/Piechart'
+import KpiCard from '../../components/overview/KpiCard'
+import Barchart from '../../components/overview/Barchart'
+import Piechart from '../../components/overview/Piechart'
 import DataTable from '@/components/overview/Datatable'
 import { Loader } from '@/pages/dashboard/loader'
 

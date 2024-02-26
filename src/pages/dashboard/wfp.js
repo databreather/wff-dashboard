@@ -2,11 +2,11 @@ import { useState, useEffect} from 'react';
 import {styled} from '@mui/material/styles'
 import {Box, Container} from '@mui/material'
 import DashboardTabs from '@/sections/dashboardTabs';
-import Overview  from "@/sections/overview";
-import Farmers from '@/sections/farmers';
-import Production from '@/sections/production';
-import SalesAndDistribution from '@/sections/salesAndDistribution';
-import SummaryReport from '@/sections/summaryReport';
+import Overview  from "@/sections/wfp/overview";
+import Farmers from '@/sections/wfp/farmers';
+import Production from '@/sections/wfp/production';
+import SalesAndDistribution from '@/sections/wfp/salesAndDistribution';
+import SummaryReport from '@/sections/wfp/summaryReport';
 
 
 const Dashboard = () => {
@@ -42,15 +42,6 @@ const Dashboard = () => {
 
     }, [])
 
-  const SIDE_NAV_WIDTH = 280
-  const LayoutRoot = styled('div')(({theme}) => ({
-    display: 'flex',
-    flex: '1 1 auto',
-    maxWidth: '100%',
-    [theme.breakpoints.up('lg')]: {
-      paddingLeft: SIDE_NAV_WIDTH
-    }
-  }))
   const LayoutContainer = styled('div')({
     display: 'flex',
     flex: '1 1 auto',

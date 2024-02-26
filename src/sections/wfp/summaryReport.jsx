@@ -38,7 +38,7 @@ const SummaryReport = ({data}) => {
     return (
         <Grid container spacing={2}>
             <Grid>
-              <Datatable title='Detailed Summary Report' rows={summaryReport} columns={columns} sx={{height: '100%', width: '100%'}} toolbar={CustomToolbar} />
+              <Datatable title='Detailed Summary Report' rows={summaryReport} columns={columns} sx={{height: '100%', width: '100%'}} toolbar={<CustomToolbar filename="UNWFP_Report"/>} />
             </Grid>
         </Grid>
     )

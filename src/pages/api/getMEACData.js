@@ -5,7 +5,7 @@ export default async function handler(req, res) {
   try{
     const db = await connectToDatabase()
 
-    const data = await db.collection('market-wfp').findOne()
+    const data = await db.collection('market_meac').findOne()
     res.status(200).json(data)
   }catch(err){
     console.log(err)
@@ -13,5 +13,3 @@ export default async function handler(req, res) {
   }
 
 }
-
-

@@ -2,7 +2,7 @@ import {Card, CardContent, Stack, Typography, Divider} from '@mui/material'
 import {PieChart} from '@mui/x-charts/PieChart'
 
 
-const Piechart = ({title, sx, data, pallete, value, label}) => {
+const Piechart = ({title, sx, data, pallete}) => {
     
     return (
 

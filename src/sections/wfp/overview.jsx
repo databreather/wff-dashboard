@@ -1,8 +1,8 @@
 import {Unstable_Grid2 as Grid} from '@mui/material'
 import { currencyFormatter, numberFormatter } from '@/utils/formatter'
-import KpiCard from '../components/overview/KpiCard'
-import Barchart from '../components/overview/Barchart'
-import Tree from '../components/overview/Tree'
+import KpiCard from '../../components/overview/KpiCard'
+import Barchart from '../../components/overview/Barchart'
+import Tree from '../../components/overview/Tree'
 import { Loader } from '@/pages/dashboard/loader'
 
 const Overview = ({data}) => {
@@ -12,6 +12,42 @@ const Overview = ({data}) => {
     }
 
     const {farmersByRegion, top5ChallengesByFarmers, top5SalesByFarmers, nodes} = data
+    const columns = [
+        { label: 'Farmer', 
+          renderCell: (item) => item.name, tree: true
+        },
+        {
+          label: 'Production Qty',
+          renderCell: (item) => item.productionQty,
+        },
+        { label: 'Production Value', 
+          renderCell: (item) => item.productionValue 
+        },
+        {
+          label: 'Distributed Qty',
+          renderCell: (item) => item.distributedQty,
+        },
+        { 
+          label: 'Distributed Value', 
+          renderCell: (item) => item.distributedValue
+        },
+        { 
+          label: 'Sales Qty', 
+          renderCell: (item) => item.salesQty
+        },
+        { 
+          label: 'Sales Value', 
+          renderCell: (item) => item.salesValue
+        },
+        { 
+          label: 'Losses Qty', 
+          renderCell: (item) => item.lossesQty
+        },
+        { 
+          label: 'Losses Value', 
+          renderCell: (item) => item.lossesValue
+        }
+      ];
     return <Grid container spacing={2}>
         <Grid xs={12} sm={6} md={4} lg={2}>
             <KpiCard title='Total Value' value={currencyFormatter(2000)}/>
@@ -44,7 +80,7 @@ const Overview = ({data}) => {
         <Barchart title="Top 5 Sales by Farmers" sx={{height: '100%', width: '100%'}} width={300} height={300} data={top5SalesByFarmers} axisDataKey='Farmer' seriesDataKey={['Total Sales']} layout  />
         </Grid>
         <Grid lg={12}>
-            <Tree nodes={nodes}/>
+            <Tree nodes={nodes} columns={columns}/>
         </Grid>
     </Grid>
 }
